@@ -27,6 +27,30 @@ From the repo root:
 streamlit run Python/app.py
 ```
 
+## Docker / Podman
+
+Build:
+
+```
+docker build -t car-specs-explorer .
+```
+
+Run (the dataset isn't baked into the image — mount it at runtime instead, so the build doesn't need Kaggle credentials):
+
+```
+docker run -p 8501:8501 -v $(pwd)/data:/app/data car-specs-explorer
+```
+
+Podman works as a drop-in replacement — swap `docker` for `podman` in both commands. One caveat: on SELinux-enabled systems (e.g. Fedora/RHEL), rootless Podman bind mounts sometimes need an SELinux relabel suffix to avoid permission-denied errors:
+
+```
+podman run -p 8501:8501 -v $(pwd)/data:/app/data:Z car-specs-explorer
+```
+
+Only add `:Z` if you actually hit that error — it's unnecessary on non-SELinux systems.
+
+Either way, the app is then reachable at http://localhost:8501.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
