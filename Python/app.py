@@ -66,4 +66,24 @@ fig_hp_msrp = px.scatter(
 )
 st.plotly_chart(fig_hp_msrp, use_container_width=True)
 
+st.subheader("Trends by Model Year")
+year_trend = filtered_df.groupby("year")[["engine_hp", "highway_mpg"]].mean().reset_index()
+fig_hp_trend = px.line(
+    year_trend,
+    x="year",
+    y="engine_hp",
+    markers=True,
+    labels={"year": "Year", "engine_hp": "Avg Engine HP"},
+)
+fig_mpg_trend = px.line(
+    year_trend,
+    x="year",
+    y="highway_mpg",
+    markers=True,
+    labels={"year": "Year", "highway_mpg": "Avg Highway MPG"},
+)
+col4, col5 = st.columns(2)
+col4.plotly_chart(fig_hp_trend, use_container_width=True)
+col5.plotly_chart(fig_mpg_trend, use_container_width=True)
+
 st.dataframe(filtered_df)
