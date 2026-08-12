@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st, plotly.express as px
 from data_utils import load_data
 
 st.set_page_config(page_title="Car Specs & MPG Dashboard", layout="wide")
@@ -34,5 +34,15 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Avg Highway MPG", avg_mpg)
 col2.metric("Avg Horsepower", avg_hp)
 col3.metric("Models", count)
+
+st.subheader("Horsepower vs. Highway MPG")
+fig = px.scatter(
+    filtered_df,
+    x="engine_hp",
+    y="highway_mpg",
+    color="engine_fuel_type",
+    labels={"engine_hp": "Engine HP", "highway_mpg": "Highway MPG", "engine_fuel_type": "Fuel Type"},
+)
+st.plotly_chart(fig, use_container_width=True)
 
 st.dataframe(filtered_df)
