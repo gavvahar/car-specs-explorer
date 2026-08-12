@@ -86,4 +86,13 @@ col4, col5 = st.columns(2)
 col4.plotly_chart(fig_hp_trend, use_container_width=True)
 col5.plotly_chart(fig_mpg_trend, use_container_width=True)
 
+st.subheader("Top 10 Most Efficient Vehicles")
+leaderboard_df = filtered_df[filtered_df["engine_hp"] > 0].copy()
+leaderboard_df["efficiency_score"] = (leaderboard_df["highway_mpg"] / (leaderboard_df["engine_hp"] / 100)).round(2)
+leaderboard_df = leaderboard_df.sort_values("efficiency_score", ascending=False).head(10)
+st.dataframe(
+    leaderboard_df[["make", "model", "year", "engine_hp", "highway_mpg", "efficiency_score"]],
+    hide_index=True,
+)
+
 st.dataframe(filtered_df)
