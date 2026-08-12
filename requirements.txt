@@ -1,3 +1,6 @@
 ruff
 tox
 nodeenv
+streamlit
+pandas
+plotly
