@@ -24,6 +24,12 @@ COLUMN_RENAME_MAP = {
 # for real car models would misrepresent actual specs in a specs dashboard.
 REQUIRED_COLUMNS = ["Engine HP", "Engine Cylinders", "Number of Doors", "Engine Fuel Type"]
 
+# Generous ceiling for data-entry errors, not legitimate outliers — e.g. a
+# 2017 Audi A6 row lists 354 highway MPG vs 29-34 for every other row of that
+# same model/year. Even the best 1990-2017 hybrids top out around 50 highway
+# MPG, so >100 is safely error territory without risking real vehicles.
+MPG_UPPER_BOUND = 100
+
 
 @st.cache_data
 def load_data(path="data/cars.csv"):
@@ -32,5 +38,6 @@ def load_data(path="data/cars.csv"):
     # Market Category is ~31% null; dropping would lose too much data, so
     # null becomes its own explicit category instead.
     df["Market Category"] = df["Market Category"].fillna("Not Specified")
+    df = df[(df["highway MPG"] <= MPG_UPPER_BOUND) & (df["city mpg"] <= MPG_UPPER_BOUND)]
     df = df.rename(columns=COLUMN_RENAME_MAP)
     return df.reset_index(drop=True)
