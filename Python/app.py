@@ -37,6 +37,7 @@ fig_hp_mpg = px.scatter(
     x="engine_hp",
     y="highway_mpg",
     color="engine_fuel_type",
+    render_mode="svg",
     labels={"engine_hp": "Engine HP", "highway_mpg": "Highway MPG", "engine_fuel_type": "Fuel Type"},
 )
 st.plotly_chart(fig_hp_mpg, use_container_width=True)
@@ -58,6 +59,7 @@ fig_hp_msrp = px.scatter(
     y="msrp",
     color="engine_fuel_type",
     log_y=True,
+    render_mode="svg",
     labels={"engine_hp": "Engine HP", "msrp": "MSRP", "engine_fuel_type": "Fuel Type"},
 )
 st.plotly_chart(fig_hp_msrp, use_container_width=True)
