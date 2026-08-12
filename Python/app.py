@@ -36,13 +36,34 @@ col2.metric("Avg Horsepower", avg_hp)
 col3.metric("Models", count)
 
 st.subheader("Horsepower vs. Highway MPG")
-fig = px.scatter(
+fig_hp_mpg = px.scatter(
     filtered_df,
     x="engine_hp",
     y="highway_mpg",
     color="engine_fuel_type",
     labels={"engine_hp": "Engine HP", "highway_mpg": "Highway MPG", "engine_fuel_type": "Fuel Type"},
 )
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig_hp_mpg, use_container_width=True)
+
+st.subheader("Avg Highway MPG by Vehicle Style")
+style_mpg = filtered_df.groupby("vehicle_style")["highway_mpg"].mean().sort_values(ascending=False).reset_index()
+fig_style_mpg = px.bar(
+    style_mpg,
+    x="vehicle_style",
+    y="highway_mpg",
+    labels={"vehicle_style": "Vehicle Style", "highway_mpg": "Avg Highway MPG"},
+)
+st.plotly_chart(fig_style_mpg, use_container_width=True)
+
+st.subheader("Horsepower vs. MSRP")
+fig_hp_msrp = px.scatter(
+    filtered_df,
+    x="engine_hp",
+    y="msrp",
+    color="engine_fuel_type",
+    log_y=True,
+    labels={"engine_hp": "Engine HP", "msrp": "MSRP", "engine_fuel_type": "Fuel Type"},
+)
+st.plotly_chart(fig_hp_msrp, use_container_width=True)
 
 st.dataframe(filtered_df)
