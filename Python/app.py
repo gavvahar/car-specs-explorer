@@ -37,6 +37,8 @@ fig_hp_mpg = px.scatter(
     x="engine_hp",
     y="highway_mpg",
     color="engine_fuel_type",
+    hover_data=["make", "model", "year"],
+    height=600,
     render_mode="svg",
     labels={"engine_hp": "Engine HP", "highway_mpg": "Highway MPG", "engine_fuel_type": "Fuel Type"},
 )
