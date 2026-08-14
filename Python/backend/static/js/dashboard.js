@@ -3,6 +3,7 @@ import { initFilters, getCurrentFilters } from "./filters.js";
 import { renderCharts } from "./charts.js";
 import { renderKpis } from "./kpis.js";
 import { renderLeaderboard } from "./leaderboard.js";
+import { initAiSummary } from "./ai-summary.js";
 
 async function refresh() {
     const filters = getCurrentFilters();
@@ -19,6 +20,7 @@ async function refresh() {
 async function init() {
     await initFilters(refresh);
     await refresh();
+    initAiSummary();
 }
 
 init();
