@@ -2,7 +2,7 @@
 
 A Streamlit dashboard for exploring car specs — horsepower, MPG, and price — built on Kaggle's "Car Features and MSRP" dataset (~11k vehicles, model years 1990-2017).
 
-**Status: work in progress.** Done so far: data loading/cleaning, sidebar filters (Make / Year / Fuel Type), a KPI row (avg highway MPG, avg horsepower, model count), and the flagship Horsepower vs. Highway MPG scatter chart. Still pending: three more charts, the efficiency leaderboard, the required UX iteration pass, and final polish.
+**Status: feature-complete.** Data loading/cleaning, sidebar filters (Make / Year / Fuel Type), a KPI row, four charts (Horsepower vs. Highway MPG with hover tooltips, Avg Highway MPG by Vehicle Style, Horsepower vs. MSRP, and Horsepower/MPG trends by model year), and a Top 10 efficiency leaderboard are all built, with empty-state handling throughout. The only thing not implemented is the optional AI-generated natural-language summary stretch goal.
 
 ## Setup
 
