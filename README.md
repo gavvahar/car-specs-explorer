@@ -28,6 +28,19 @@ From the repo root:
 streamlit run Python/app.py
 ```
 
+## FastAPI Backend
+
+This branch also includes a FastAPI + server-rendered frontend, replacing the Streamlit app as the primary interface.
+
+From the repo root:
+
+```
+cd Python
+uvicorn backend.main:app --reload --port 8000
+```
+
+Then visit http://localhost:8000.
+
 ## Docker / Podman
 
 Build:
@@ -39,18 +52,18 @@ docker build -t car-specs-explorer .
 Run (the dataset isn't baked into the image — mount it at runtime instead, so the build doesn't need Kaggle credentials):
 
 ```
-docker run -p 8501:8501 -v $(pwd)/data:/app/data car-specs-explorer
+docker run -p 8000:8000 -v $(pwd)/data:/app/data car-specs-explorer
 ```
 
 Podman works as a drop-in replacement — swap `docker` for `podman` in both commands. One caveat: on SELinux-enabled systems (e.g. Fedora/RHEL), rootless Podman bind mounts sometimes need an SELinux relabel suffix to avoid permission-denied errors:
 
 ```
-podman run -p 8501:8501 -v $(pwd)/data:/app/data:Z car-specs-explorer
+podman run -p 8000:8000 -v $(pwd)/data:/app/data:Z car-specs-explorer
 ```
 
 Only add `:Z` if you actually hit that error — it's unnecessary on non-SELinux systems.
 
-Either way, the app is then reachable at http://localhost:8501.
+The container serves the FastAPI backend — visit http://localhost:8000.
 
 ## License
 

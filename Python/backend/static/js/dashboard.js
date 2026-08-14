@@ -7,11 +7,22 @@ import { initAiSummary } from "./ai-summary.js";
 
 async function refresh() {
     const filters = getCurrentFilters();
+    const emptyMessage = document.getElementById("empty-state-message");
+    const content = document.getElementById("dashboard-content");
+
     try {
         const data = await getDashboard(filters);
         renderKpis(data.kpis);
-        renderCharts(data.charts);
-        renderLeaderboard(data.leaderboard);
+
+        if (data.kpis.count === 0) {
+            emptyMessage.style.display = "block";
+            content.style.display = "none";
+        } else {
+            emptyMessage.style.display = "none";
+            content.style.display = "block";
+            renderCharts(data.charts);
+            renderLeaderboard(data.leaderboard);
+        }
     } catch (error) {
         console.error("Failed to load dashboard data:", error);
     }
