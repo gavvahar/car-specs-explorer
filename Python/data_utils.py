@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd, streamlit as st
 
 COLUMN_RENAME_MAP = {
@@ -30,9 +32,14 @@ REQUIRED_COLUMNS = ["Engine HP", "Engine Cylinders", "Number of Doors", "Engine 
 # MPG, so >100 is safely error territory without risking real vehicles.
 MPG_UPPER_BOUND = 100
 
+# Anchored to this file's own location, not cwd — the Streamlit app runs from
+# repo root, but the FastAPI backend runs via `cd Python && uvicorn ...`, and
+# a cwd-relative default silently resolved to the wrong path under that cwd.
+DEFAULT_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "cars.csv"
+
 
 @st.cache_data
-def load_data(path="data/cars.csv"):
+def load_data(path=DEFAULT_DATA_PATH):
     df = pd.read_csv(path)
     df = df.dropna(subset=REQUIRED_COLUMNS)
     # Market Category is ~31% null; dropping would lose too much data, so
