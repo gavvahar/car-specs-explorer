@@ -1,13 +1,10 @@
 import { getDashboard } from "./api.js";
 import { initFilters, getCurrentFilters } from "./filters.js";
+import { renderCharts } from "./charts.js";
 
-// Stubs — Tasks 12/13 replace these with real rendering.
+// Stub — Task 13 replaces this with real rendering.
 function renderKpis(kpis) {
     console.log("renderKpis", kpis);
-}
-
-function renderCharts(charts) {
-    console.log("renderCharts", charts);
 }
 
 function renderLeaderboard(leaderboard) {
