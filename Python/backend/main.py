@@ -1,6 +1,9 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
 
 from .routes import ai_summary, dashboard, filters
+
+load_dotenv()
 
 app = FastAPI(title="Car Specs & MPG Dashboard API")
 
