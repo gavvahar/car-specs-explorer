@@ -1,15 +1,8 @@
 import { getDashboard } from "./api.js";
 import { initFilters, getCurrentFilters } from "./filters.js";
 import { renderCharts } from "./charts.js";
-
-// Stub — Task 13 replaces this with real rendering.
-function renderKpis(kpis) {
-    console.log("renderKpis", kpis);
-}
-
-function renderLeaderboard(leaderboard) {
-    console.log("renderLeaderboard", leaderboard);
-}
+import { renderKpis } from "./kpis.js";
+import { renderLeaderboard } from "./leaderboard.js";
 
 async function refresh() {
     const filters = getCurrentFilters();
