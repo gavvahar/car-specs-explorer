@@ -10,17 +10,17 @@ router = APIRouter()
 
 @router.get("/api/dashboard")
 def dashboard(
-    makes: Optional[list[str]] = Query(default=None),
+    makes: Optional[str] = Query(default=None),
     year_min: Optional[int] = Query(default=None),
     year_max: Optional[int] = Query(default=None),
-    fuel_types: Optional[list[str]] = Query(default=None),
+    fuel_types: Optional[str] = Query(default=None),
 ):
     filtered_df = filtering.apply_filters(
         state.get_df(),
-        makes=makes,
+        makes=filtering.parse_list_param(makes),
         year_min=year_min,
         year_max=year_max,
-        fuel_types=fuel_types,
+        fuel_types=filtering.parse_list_param(fuel_types),
     )
     return {
         "kpis": kpis.compute_kpis(filtered_df),

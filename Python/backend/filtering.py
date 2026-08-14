@@ -17,3 +17,11 @@ def get_filter_options(df):
         "year_min": int(df["year"].min()),
         "year_max": int(df["year"].max()),
     }
+
+
+def parse_list_param(raw):
+    if raw is None:
+        return None
+    if raw == "":
+        return []
+    return raw.split(",")
