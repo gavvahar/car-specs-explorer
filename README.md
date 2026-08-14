@@ -2,13 +2,14 @@
 
 A Streamlit dashboard for exploring car specs — horsepower, MPG, and price — built on Kaggle's "Car Features and MSRP" dataset (~11k vehicles, model years 1990-2017).
 
-**Status: feature-complete.** Data loading/cleaning, sidebar filters (Make / Year / Fuel Type), a KPI row, four charts (Horsepower vs. Highway MPG with hover tooltips, Avg Highway MPG by Vehicle Style, Horsepower vs. MSRP, and Horsepower/MPG trends by model year), and a Top 10 efficiency leaderboard are all built, with empty-state handling throughout. The only thing not implemented is the optional AI-generated natural-language summary stretch goal.
+**Status: feature-complete.** Data loading/cleaning, sidebar filters (Make / Year / Fuel Type), a KPI row, four charts (Horsepower vs. Highway MPG with hover tooltips, Avg Highway MPG by Vehicle Style, Horsepower vs. MSRP, and Horsepower/MPG trends by model year), and a Top 10 efficiency leaderboard are all built, with empty-state handling throughout. The optional AI-generated natural-language summary stretch goal is also implemented, gated on an ANTHROPIC_API_KEY being present.
 
 ## Setup
 
 1. Clone the repo.
 2. Create/activate the `car` conda environment: `conda env create -f environment.yml` (or `conda activate car` if it already exists).
 3. Install dependencies: `pip install -r requirements.txt`.
+4. (Optional) For the AI summary feature, copy `.env.example` to `.env` and add your `ANTHROPIC_API_KEY`.
 
 ## Dataset
 
