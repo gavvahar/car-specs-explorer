@@ -16,3 +16,6 @@ data/*.csv
 
 # OS
 .DS_Store
+
+# Screenshots (working files, not committed)
+*.jpg
