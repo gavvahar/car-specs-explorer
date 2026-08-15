@@ -163,3 +163,54 @@ td {
   color: var(--color-text-muted);
   margin-bottom: 1.5rem;
 }
+
+select {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+select option {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-text);
+  margin-top: -5px;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-text);
+  border: none;
+  cursor: pointer;
+}
