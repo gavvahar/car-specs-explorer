@@ -114,7 +114,7 @@ else:
                 f"model years {filtered_df['year'].min()}-{filtered_df['year'].max()}. "
                 "Write one friendly, conversational paragraph summarizing this filtered "
                 "car dataset for someone browsing a dashboard, e.g. \"You're looking at "
-                "42 SUVs from 2005-2012 averaging 22 MPG...\""
+                '42 SUVs from 2005-2012 averaging 22 MPG..."'
             )
             try:
                 with st.spinner("Generating summary..."):
