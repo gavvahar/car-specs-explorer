@@ -63,6 +63,14 @@ podman run -p 8000:8000 -v $(pwd)/data:/app/data:Z car-specs-explorer
 
 Only add `:Z` if you actually hit that error — it's unnecessary on non-SELinux systems.
 
+Or, with Docker Compose:
+
+```
+docker compose up --build
+```
+
+That's the simplest path if you don't need the manual build/run split — same port and volume mount as the commands above, driven from `compose.yaml`. Note: `compose.yaml` references a `.env` file directly, and not every Compose implementation treats that as optional — create an empty `.env` if you don't need the AI summary feature and `docker compose up` complains about a missing file.
+
 The container serves the FastAPI backend — visit http://localhost:8000.
 
 ## License
