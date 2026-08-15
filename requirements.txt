@@ -5,6 +5,7 @@ streamlit
 pandas
 plotly
 anthropic
+httpx
 python-dotenv
 fastapi
 uvicorn[standard]

@@ -29,7 +29,7 @@ def ai_summary_route(
         summary = ai_summary.generate_summary(filtered_df)
     except RuntimeError as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
-    except anthropic.APIError as e:
+    except (anthropic.APIError, ConnectionError) as e:
         raise HTTPException(status_code=502, detail="The AI summary service is unavailable right now.") from e
 
     return {"summary": summary}
