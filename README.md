@@ -9,7 +9,11 @@ A Streamlit dashboard for exploring car specs — horsepower, MPG, and price —
 1. Clone the repo.
 2. Create/activate the `car` conda environment: `conda env create -f environment.yml` (or `conda activate car` if it already exists).
 3. Install dependencies: `pip install -r requirements.txt`.
-4. (Optional) For the AI summary feature, copy `.env.example` to `.env` and add your `ANTHROPIC_API_KEY`.
+4. (Optional) For the AI summary feature, copy `.env.example` to `.env` and configure:
+   - `ANTHROPIC_API_KEY` — required if using the default Anthropic provider.
+   - `AI_SUMMARY_PROVIDER` — `anthropic` (default) or `ollama`.
+   - `OLLAMA_BASE_URL` — only used when provider is `ollama`; defaults to `http://localhost:11434`.
+   - `OLLAMA_MODEL` — required when provider is `ollama` (no default — must match a model already pulled on your Ollama instance).
 
 ## Dataset
 
