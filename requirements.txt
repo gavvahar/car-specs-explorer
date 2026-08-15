@@ -6,3 +6,6 @@ pandas
 plotly
 anthropic
 python-dotenv
+fastapi
+uvicorn[standard]
+jinja2
