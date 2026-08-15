@@ -214,3 +214,17 @@ input[type="range"]::-moz-range-thumb {
   border: none;
   cursor: pointer;
 }
+
+#generate-summary-btn {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+#generate-summary-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
