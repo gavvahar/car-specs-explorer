@@ -1,7 +1,27 @@
 export function renderCharts(chartsData) {
-    Plotly.react("chart-hp-mpg", chartsData.hp_mpg.data, chartsData.hp_mpg.layout);
-    Plotly.react("chart-mpg-by-style", chartsData.mpg_by_style.data, chartsData.mpg_by_style.layout);
-    Plotly.react("chart-hp-msrp", chartsData.hp_msrp.data, chartsData.hp_msrp.layout);
-    Plotly.react("chart-hp-trend", chartsData.year_trends.hp_trend.data, chartsData.year_trends.hp_trend.layout);
-    Plotly.react("chart-mpg-trend", chartsData.year_trends.mpg_trend.data, chartsData.year_trends.mpg_trend.layout);
+  Plotly.react(
+    "chart-hp-mpg",
+    chartsData.hp_mpg.data,
+    chartsData.hp_mpg.layout,
+  );
+  Plotly.react(
+    "chart-mpg-by-style",
+    chartsData.mpg_by_style.data,
+    chartsData.mpg_by_style.layout,
+  );
+  Plotly.react(
+    "chart-hp-msrp",
+    chartsData.hp_msrp.data,
+    chartsData.hp_msrp.layout,
+  );
+  Plotly.react(
+    "chart-hp-trend",
+    chartsData.year_trends.hp_trend.data,
+    chartsData.year_trends.hp_trend.layout,
+  );
+  Plotly.react(
+    "chart-mpg-trend",
+    chartsData.year_trends.mpg_trend.data,
+    chartsData.year_trends.mpg_trend.layout,
+  );
 }
