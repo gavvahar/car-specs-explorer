@@ -45,8 +45,9 @@ def _call_ollama(prompt):
                 "model": model,
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
+                "options": {"num_predict": 300},
             },
-            timeout=30,
+            timeout=90,
         )
         response.raise_for_status()
     except httpx.HTTPError as e:
